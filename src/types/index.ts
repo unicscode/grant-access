@@ -22,7 +22,7 @@ type And = {
   _and: BaseFilter[];
 };
 type Or = {
-  _and: BaseFilter[];
+  _or: BaseFilter[];
 };
 
 type Not = {
