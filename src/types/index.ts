@@ -4,7 +4,6 @@ interface BaseFilter {
     _neq?: any;
     _in?: any[];
     _nin?: any[];
-    _not?: any;
     _lt?: any;
     _lte?: any;
     _gt?: any;
@@ -12,9 +11,6 @@ interface BaseFilter {
     _is_null?: boolean;
     _like?: string;
     _ilike?: string;
-    _similar?: string;
-    _regexp?: string;
-    _iregexp?: string;
   };
 }
 

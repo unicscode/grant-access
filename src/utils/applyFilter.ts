@@ -5,7 +5,6 @@ const operatorsList = {
   _neq: true,
   _in: true,
   _nin: true,
-  _not: true,
   _lt: true,
   _lte: true,
   _gt: true,
@@ -24,7 +23,8 @@ function applyFilter<T>(on: T, filter: Filters): boolean {
   if (Array.isArray(on)) {
     return !!on.filter(item => applyFilter(item, filter));
   } else if (typeof on === 'object') {
-    const { where: { _and, _or, ...rest } = {}, ...restFilter } = filter;
+    // @ts-ignore
+    const { where: { _and, _or, _not, ...rest } = {}, ...restFilter } = filter;
 
     let match = true;
     if (_and) {
@@ -43,6 +43,15 @@ function applyFilter<T>(on: T, filter: Filters): boolean {
           match = true;
           break;
         }
+      }
+    }
+    if (_not) {
+      if (Object.keys(_not)[0] === '_and') {
+        return !applyFilter(on, { where: { _and: _not['_and'] } });
+      } else if (Object.keys(_not)[0] === '_or') {
+        return !applyFilter(on, { where: { _and: _not['_or'] } });
+      } else {
+        return !applyFilter(on, { where: _not });
       }
     }
 
@@ -84,9 +93,6 @@ function applyFilter<T>(on: T, filter: Filters): boolean {
             break;
           case '_ilike':
             if (!new RegExp(value[operator], 'i').test(on[key])) return false;
-            break;
-          case '_not':
-            if (applyFilter(on, { where: value[operator] })) return false;
             break;
           default:
             throw new Error(`Unknown operator: ${operator}`);
