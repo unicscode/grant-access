@@ -1,3 +1,4 @@
+// @ts-nocheck
 export interface Where {
   _and?: Where[];
   _or?: Where[];

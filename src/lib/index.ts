@@ -1,1 +1,1 @@
-export { default as useGrantAccess } from './useGrantAccess';
+export { default as GrantAccess } from './GrantAccess';
