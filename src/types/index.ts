@@ -1,8 +1,4 @@
-// @ts-nocheck
-export interface Where {
-  _and?: Where[];
-  _or?: Where[];
-  _not?: Where;
+interface BaseFilter {
   [column: string]: {
     _eq?: any;
     _neq?: any;
@@ -16,12 +12,23 @@ export interface Where {
     _is_null?: boolean;
     _like?: string;
     _ilike?: string;
-    // _similar?: string;
-    // _regexp?: string;
-    // _iregexp?: string;
+    _similar?: string;
+    _regexp?: string;
+    _iregexp?: string;
   };
 }
 
+type And = {
+  _and: BaseFilter[];
+};
+type Or = {
+  _and: BaseFilter[];
+};
+
+type Not = {
+  _not: BaseFilter | And | Or;
+};
+
 export interface Filters {
-  where: Where;
+  where: BaseFilter | And | Or | Not;
 }
