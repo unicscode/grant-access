@@ -6,13 +6,13 @@ This React authorization library is designed to work with React, providing a fil
 
 To install the library, simply run the following command in your project directory:
 
-```sh=
+```shell
 npm install react-grant-access --save
 ```
 
-## Example
+## Basic Example
 
-```ts=
+```typescript
 const App = () => {
   const user = {
     id: 1,
