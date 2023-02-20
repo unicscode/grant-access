@@ -11,7 +11,10 @@ const App = () => {
   return <PirvateComponent user={user} />;
 };
 
-const policy = { where: { id: { _eq: 1 } } };
+const AccessDenied = () => {
+  return <h1>Access denied</h1>;
+};
+const policy = { where: { id: { _eq: 2 } } };
 
 const PirvateComponent = ({
   user,
@@ -22,10 +25,7 @@ const PirvateComponent = ({
 
   return (
     <div>
-      <GrantAccess
-        hasAccess={hasAccess}
-        otherwiseRender={<h1>Access denied</h1>}
-      >
+      <GrantAccess hasAccess={hasAccess} otherwiseRender={<AccessDenied />}>
         <button type="button"> Delete </button>
       </GrantAccess>
     </div>
