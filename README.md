@@ -1,6 +1,6 @@
 # grant-access
 
-This React authorization library is designed to work with React, providing a filtering style that allows for fine-grained control over user permissions. The library provides a GrantAccess component that can be used to check if a user is authorized to see a component or not, based on a specified policy. The library is built to be easy to use and highly customizable, making it a great choice for projects of all sizes.
+This React authorization library is designed to work with React, providing a filtering style inspired by Hasura that allows for fine-grained control over user permissions. The library provides a GrantAccess component that can be used to check if a user is authorized to see a component or not, based on a specified policy. The library is built to be easy to use and highly customizable, making it a great choice for projects of all sizes.
 
 ## Installation
 
